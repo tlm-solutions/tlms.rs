@@ -152,7 +152,9 @@ impl ApiTransmissionLocation {
         if let Ok(epsg_val) = serde_json::from_str(&format!("{{ \"x\":{x}, \"y\":{y} }}")) {
             self.properties["epsg3857"] = epsg_val;
         } else {
-            eprintln!("epsg3857 property update skipped: Could not serialize {x} and {y} into json Value!");
+            eprintln!(
+                "epsg3857 property update skipped: Could not serialize {x} and {y} into json Value!"
+            );
         }
     }
 }

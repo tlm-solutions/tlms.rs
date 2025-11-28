@@ -2,8 +2,8 @@ use crate::schema::*;
 
 use log::warn;
 use pbkdf2::{
-    password_hash::{Encoding, PasswordHash, PasswordHasher, PasswordVerifier, SaltString},
     Pbkdf2,
+    password_hash::{Encoding, PasswordHash, PasswordHasher, PasswordVerifier, SaltString},
 };
 use serde::ser::SerializeStruct;
 use serde::{Deserialize, Serialize, Serializer};
@@ -13,8 +13,8 @@ use uuid::Uuid;
 use diesel::deserialize::{self, FromSql};
 use diesel::serialize::{self, Output, ToSql};
 use diesel::{
-    pg::Pg, AsChangeset, AsExpression, ExpressionMethods, FromSqlRow, Identifiable, Insertable,
-    PgConnection, QueryDsl, Queryable, RunQueryDsl,
+    AsChangeset, AsExpression, ExpressionMethods, FromSqlRow, Identifiable, Insertable,
+    PgConnection, QueryDsl, Queryable, RunQueryDsl, pg::Pg,
 };
 use securefmt::Debug;
 use std::collections::HashMap;

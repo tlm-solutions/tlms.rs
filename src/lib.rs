@@ -44,12 +44,12 @@ pub mod time_serializer {
     use serde::{Deserialize, Deserializer, Serialize, Serializer};
 
     /// this is a function that serializes NaiveDateTime as DateTime<Utc> so we also serialize
-    /// zone information as welll
+    /// zone information as well
     pub fn serialize<S>(time: &NaiveDateTime, serializer: S) -> Result<S::Ok, S::Error>
     where
         S: Serializer,
     {
-        let time = DateTime::<Utc>::from_utc(*time, Utc);
+        let time = DateTime::<Utc>::from_naive_utc_and_offset(*time, Utc);
 
         time.serialize(serializer)
     }

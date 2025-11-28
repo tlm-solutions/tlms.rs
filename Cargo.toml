@@ -1,7 +1,7 @@
 [package]
 name = "tlms"
-version = "0.9.0"
-edition = "2021"
+version = "0.10.0"
+edition = "2024"
 
 [features]
 
@@ -24,6 +24,7 @@ receivers = []
 
 grpc = [
     "dep:tonic",
+    "dep:tonic-prost",
     "dep:prost",
 ]
 
@@ -36,6 +37,7 @@ telegrams = [
     "dep:regex",
     "dep:struct-field-names-as-array",
     "dep:tonic",
+    "dep:tonic-prost",
     "dep:prost",
     "dep:utoipa"
 ]
@@ -57,25 +59,26 @@ statistics = [
 serde_json = "1.0"
 serde = {version = "1.0", features = ["derive"]}
 chrono = {version = "0.4", features = [ "serde" ]}
-uuid = {version = "1.2", features = ["serde", "v4"]}
-num-derive = {version = "0.3"}
+uuid = {version = "1.18", features = ["serde", "v4"]}
+num-derive = {version = "0.4"}
 
-diesel = { version = "2.0", features = ["postgres", "r2d2", "chrono", "uuid"]}
+diesel = { version = "2.3", features = ["postgres", "r2d2", "chrono", "uuid"]}
 
-tonic = {version = "0.7", optional = true}
-prost = {version = "0.10", optional = true}
+tonic = {version = "0.14", optional = true}
+tonic-prost = {version = "0.14", optional = true}
+prost = { version = "0.14", optional = true}
 
-struct-field-names-as-array = {version = "0.1", optional = true}
+struct-field-names-as-array = {version = "0.3", optional = true}
 num-traits = {version = "0.2", optional = true}
-pbkdf2 = {version = "0.11", optional = true}
-rand = {version = "0.8", optional = true}
+pbkdf2 = {version = "0.12", optional = true, features = ["simple"]}
+rand = {version = "0.9", optional = true}
 log = { version = "0.4", optional = true}
-regex = {version = "1.7", optional = true}
+regex = {version = "1.12", optional = true}
 
-reqwest = {version = "0.11", optional = true, features = ["blocking"]}
-utoipa = {version = "3", optional = true}
+reqwest = {version = "0.12", optional = true, features = ["blocking"]}
+utoipa = {version = "5", optional = true, features = [ "chrono", "uuid"]}
 
 securefmt = { version = "0.1" }
 
 [build-dependencies]
-tonic-build = "0.7"
+tonic-prost-build = "0.14"
